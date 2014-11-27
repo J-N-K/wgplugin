@@ -1,6 +1,7 @@
 # T-FlipFlop v1.0
 #
-# Copyright: JNK (http://knx-user-forum.de/members/jnk.html)
+# Copyright 2014: JNK (http://knx-user-forum.de/members/jnk.html)
+# latest version available on https://github.com/J-N-K/wgplugin
 #
 
 my $in_ga = "9/0/0";   # Eingangs-GA

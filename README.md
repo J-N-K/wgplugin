@@ -3,6 +3,7 @@ wgplugin
 
 Simple Perl Plugins for the Wiregate.
 
+MySQLStoreData.pl: cyclic storage of set of values to MySQL-database
 T-Flipflop: Output group-address toggles on rising edge of input group address
 
 Wiregate is a registered trademark of Elaborated Networks. This repository
