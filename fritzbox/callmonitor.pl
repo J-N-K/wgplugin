@@ -1,4 +1,4 @@
-# Fritzbox Callmonitor
+# Fritzbox Callmonitor v2.0
 #
 # Copyright 2012-15: JNK (http://knx-user-forum.de/members/jnk.html)
 # latest version available on https://github.com/J-N-K/wgplugin
