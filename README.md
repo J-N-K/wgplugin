@@ -3,15 +3,11 @@ wgplugin
 
 Simple Perl Plugins for the Wiregate.
 
-MySQLStoreData.pl: cyclic storage of set of values to MySQL-database
+* MySQLStoreData.pl: cyclic storage of set of values to MySQL-database
 
-MySQLStoreEvent.pl: storage single values with name to MySQL-database
+* MySQLStoreEvent.pl: storage single values with name to MySQL-database
 
-T-Flipflop: Output group-address toggles on rising edge of input group address
-
-fritzbox/callmonitor.pl: Plugin for connection to Fritzbox TCP-Port
-
-fritzbox/callist.php: provides iframe for integration in CometVisu
+* T-Flipflop: Output group-address toggles on rising edge of input group address
 
 Wiregate is a registered trademark of Elaborated Networks. This repository
 is in no way connected to Elaborated Networks and the author ist not an
