@@ -1,0 +1,44 @@
+/*
+ * dwd_warning.css v1.0
+ *
+ * Copyright 2015: JNK (http://knx-user-forum.de/members/jnk.html)
+ * latest version available on https://github.com/J-N-K/wgplugin
+ *
+ */
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Dosis-Medium.ttf");
+}
+
+body {
+  color: #fff;
+  font-family: Dosis,Helvetica,Arial,sans-serif;
+  font-size: 4mm;
+  margin: 0;
+  overflow: hidden;
+  text-shadow: 0 1px 1px #111;
+}
+
+img {
+  height: 2em;
+}
+
+div {
+  line-height: 1em;
+  padding: 0.3em 0.3em 0.3em 1em;
+}
+
+.dwd_caption {
+  font-size: 1.2em;
+}
+td {
+  padding: 0.3em 0.3em 0.3em 1em;
+  line-height: 1em;
+}
+
+td + td {
+  padding-left: 1.5em;
+}
