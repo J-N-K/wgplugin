@@ -15,10 +15,6 @@ my $send_port = "50151";
 my $recv_ip = "localhost";
 my $recv_port = "50150";
 
-# socket parameters:
-# socket 1: tcp-connect     <IP-Fritzbox>:1012       cr,forever
-# socket 2: udp-datagram    localhost:50150          bind=localhost:50151,reuseaddr
-
 my %localnumbers =10 (
   "0209XXXXXXX" => "Janessa Fon",
   "0209XXXXXXX" => "Janessa Fax"
