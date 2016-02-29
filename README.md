@@ -7,6 +7,8 @@ Simple Perl Plugins for the Wiregate.
 
 * MySQLStoreEvent.pl: storage single values with name to MySQL-database
 
+* S0Zaehler-pl: S0-Impulse in Zählerstände umwandeln und in RRD speichern
+
 * T-Flipflop: Output group-address toggles on rising edge of input group address
 
 Wiregate is a registered trademark of Elaborated Networks. This repository
