@@ -1,9 +1,10 @@
-# S0 Zaehler v1.1
+# S0 Zaehler v1.2
 # 
 # Copyright 2016: JNK (http://knx-user-forum.de/members/jnk.html)
 # latest version available on https://github.com/J-N-K/wgplugin
 #
- 
+# COMPILE_PLUGIN
+
 #
 # config starts here
 #
@@ -14,28 +15,28 @@ my $counters = {
      'value_ga' => '5/4/0', # total value counter GA
      'usage_ga' => '5/4/10', # current usage GA
      'offset' => 2434891, # offset of S0 counts / meter reading
-     'scaling' => 100, # scaling factor S0 counts / counter units
+     's0scaling' => 100, # scaling factor S0 counts / counter units
      },
   '5/4/101' => { 
      'name' => 'strom',
      'value_ga' => '5/4/1',
      'usage_ga' => '5/4/11',
      'offset' => 68737500,
-     'scaling' => 1000,
+     's0scaling' => 1000,
+     'usagescaling' => 3600000, # (kWh => Ws) 
      }, 
   };
 
 my $rrdpath = "/var/www/rrd";		# path to RRD files
 my @countermodes = (5,15,60,1440);	# resolution for COUNTER RRDs in minutes (1440 = daily usage)
 
-my $debug = 1; # Debug-Meldungen ausgeben?
+my $debug = 1; # print debug messages
 
 #
 # config ends here
 #
 
 my $now = time();
-
 
 if (($msg{'apci'} eq "A_GroupValue_Write") && (exists $counters->{$msg{'dst'}})) {
   my $counter = $counters->{$msg{'dst'}};
@@ -57,15 +58,12 @@ if (($msg{'apci'} eq "A_GroupValue_Write") && (exists $counters->{$msg{'dst'}}))
   }
  
   # write to knx
-  my $ctr_value = $total/$counter->{'scaling'}; 
-  if ($counter->{'value_ga'}) {
-    knx_write($counter->{'value_ga'}, $ctr_value);
-  }
+  my $ctr_value = $total/$counter->{'s0scaling'}; 
+  knx_write($counter->{'value_ga'}, $ctr_value) if ($counter->{'value_ga'});
   
-  my $usage = ($total - $plugin_info{$plugname.'_'.$name.'_value'})/($now - $plugin_info{$plugname.'_'.$name.'_last'})*$counter->{'scaling'};;
-  if ($counter->{'usage_ga'}) {
-    knx_write($counter->{'usage_ga'}, $usage);
-  }
+  my $scaling = ($counter->{'usagescaling'} // 1) / $counter->{'s0scaling'};
+  my $usage = ($total - $plugin_info{$plugname.'_'.$name.'_value'}) / ($now - $plugin_info{$plugname.'_'.$name.'_last'}) * $scaling;
+  knx_write($counter->{'usage_ga'}, $usage) if ($counter->{'usage_ga'});
     
   # save last value and timestamp
   $plugin_info{$plugname.'_'.$name.'_value'} = $total;
